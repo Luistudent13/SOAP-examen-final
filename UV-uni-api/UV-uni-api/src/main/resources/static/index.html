@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Plataforma Académica Unificada - UV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Plataforma Académica Unificada - UV</h1>
+    <p>Mini Frontend (SOAP + REST) – Registro y gestión de alumnos y cursos</p>
+</header>
+
+<div id="mensaje-global"></div>
+
+<main>
+    <div class="grid">
+
+        <!-- ========== ALUMNOS (SOAP vía REST intermediario) ========== -->
+        <section class="card">
+            <h2>Gestión de Alumnos</h2>
+            <small>Consume el servicio SOAP de Matrículas mediante un endpoint REST intermediario.</small>
+
+            <form id="form-alumno">
+                <div>
+                    <label for="alumno-matricula">Matrícula</label>
+                    <input type="text" id="alumno-matricula" required placeholder="UV00123">
+                </div>
+
+                <div>
+                    <label for="alumno-nombre">Nombre completo</label>
+                    <input type="text" id="alumno-nombre" required placeholder="Juan Pérez">
+                </div>
+
+                <div>
+                    <label for="alumno-programa">Programa</label>
+                    <input type="text" id="alumno-programa" required placeholder="Ing. Sistemas">
+                </div>
+
+                <div class="actions">
+                    <button type="button" class="btn-primary" id="btn-registrar-alumno">
+                        ➕ Registrar alumno
+                    </button>
+
+                    <button type="button" class="btn-outline" id="btn-editar-alumno">
+                        ✏️ Editar alumno
+                    </button>
+                </div>
+
+                <pre id="alumno-respuesta" style="display: none;"></pre>
+            </form>
+        </section>
+
+        <!-- ========== CURSOS (REST) ========== -->
+        <section class="card">
+            <h2>Gestión de Cursos</h2>
+            <small>Consume directamente la API REST de Cursos (JSON).</small>
+
+            <form id="form-curso">
+                <div>
+                    <label for="curso-nombre">Nombre del curso</label>
+                    <input type="text" id="curso-nombre" required placeholder="Programación Web">
+                </div>
+
+                <div class="field-group">
+                    <div>
+                        <label for="curso-fecha-inicio">Fecha de inicio</label>
+                        <input type="date" id="curso-fecha-inicio" required>
+                    </div>
+                    <div>
+                        <label for="curso-matricula">Matrícula del alumno</label>
+                        <input type="text" id="curso-matricula" required placeholder="UV00123">
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="button" class="btn-primary" id="btn-registrar-curso">
+                        ➕ Registrar curso
+                    </button>
+                    <button type="button" class="btn-danger" id="btn-eliminar-curso-id">
+                        🗑 Eliminar curso por ID
+                    </button>
+                </div>
+
+                <div>
+                    <label for="curso-id-eliminar" class="hint">
+                        ID del curso a eliminar:
+                    </label>
+                    <input type="number" id="curso-id-eliminar" placeholder="1">
+                </div>
+
+                <pre id="curso-respuesta" style="display: none;"></pre>
+            </form>
+        </section>
+
+    </div>
+</main>
+
+<!-- Archivo JS -->
+<script src="app.js"></script>
+
+</body>
+</html>
